@@ -11,8 +11,21 @@
         $seoImage = route("fileView", ["path" => "settings/".Helper::GeneralSiteSettings("style_apple")]);
     }
     $seoType = !empty($Topic) ? "article" : "website";
-    $seoPublishedTime = !empty($Topic) && $Topic->created_at ? $Topic->created_at->toIso8601String() : null;
-    $seoModifiedTime = !empty($Topic) && $Topic->updated_at ? $Topic->updated_at->toIso8601String() : null;
+    $formatSeoDate = static function ($value) {
+        if (empty($value)) {
+            return null;
+        }
+
+        try {
+            return $value instanceof \DateTimeInterface
+                ? $value->format(\DateTimeInterface::ATOM)
+                : \Illuminate\Support\Carbon::parse($value)->toIso8601String();
+        } catch (\Throwable $exception) {
+            return null;
+        }
+    };
+    $seoPublishedTime = !empty($Topic) ? $formatSeoDate($Topic->created_at ?? null) : null;
+    $seoModifiedTime = !empty($Topic) ? $formatSeoDate($Topic->updated_at ?? null) : null;
     $seoLocale = $seoLanguage."_".strtoupper($seoLanguage);
     $seoSection = !empty($Topic) && $Topic->webmasterSection ? ($Topic->webmasterSection->{"title_".$seoLanguage} ?? "") : "";
     $seoStructuredData = json_encode([
