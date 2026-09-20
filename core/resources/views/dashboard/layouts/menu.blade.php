@@ -402,7 +402,7 @@ $mnu_title_var2 = "title_".config('smartend.default_language');
                         <li {{ ($PathCurrentFolder==$currentFolder) ? 'class=active' : '' }} >
                             <a href="{{ route('authors') }}">
                                 <span class="nav-icon"><i class="material-icons"></i></span>
-                                <span class="nav-text">الكتاب / Authors</span>
+                                <span class="nav-text">{{__('backend.authors')}}</span>
                             </a>
                         </li>
                     @endif
