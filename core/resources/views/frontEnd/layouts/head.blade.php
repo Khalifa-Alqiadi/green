@@ -15,6 +15,23 @@
     $seoModifiedTime = !empty($Topic) && $Topic->updated_at ? $Topic->updated_at->toIso8601String() : null;
     $seoLocale = $seoLanguage."_".strtoupper($seoLanguage);
     $seoSection = !empty($Topic) && $Topic->webmasterSection ? ($Topic->webmasterSection->{"title_".$seoLanguage} ?? "") : "";
+    $seoStructuredData = json_encode([
+        '@context' => 'https://schema.org',
+        '@type' => $seoType === 'article' ? 'Article' : 'WebPage',
+        'headline' => $seoTitle,
+        'description' => $seoDescription,
+        'url' => $seoUrl,
+        'image' => [$seoImage],
+        'inLanguage' => $seoLanguage,
+        'datePublished' => $seoPublishedTime,
+        'dateModified' => $seoModifiedTime,
+        'mainEntityOfPage' => ['@type' => 'WebPage', '@id' => $seoUrl],
+        'publisher' => [
+            '@type' => 'Organization',
+            'name' => Helper::GeneralSiteSettings("site_title_".$seoLanguage),
+            'url' => url('/'),
+        ],
+    ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT);
 @endphp
 <meta charset="utf-8">
 <title>{{ $seoTitle }}</title>
@@ -91,19 +108,7 @@
     <meta property="article:section" content="{{ $seoSection }}"/>
 @endif
 <script type="application/ld+json">
-    @json([
-        '@context' => 'https://schema.org',
-        '@type' => $seoType === 'article' ? 'Article' : 'WebPage',
-        'headline' => $seoTitle,
-        'description' => $seoDescription,
-        'url' => $seoUrl,
-        'image' => [$seoImage],
-        'inLanguage' => $seoLanguage,
-        'datePublished' => $seoPublishedTime,
-        'dateModified' => $seoModifiedTime,
-        'mainEntityOfPage' => ['@type' => 'WebPage', '@id' => $seoUrl],
-        'publisher' => ['@type' => 'Organization', 'name' => Helper::GeneralSiteSettings("site_title_".$seoLanguage), 'url' => url('/')]
-    ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)
+    {!! $seoStructuredData !!}
 </script>
 
 {{-- Google Tags and google analytics --}}
