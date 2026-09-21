@@ -3355,3 +3355,29 @@ body .breadcrumbs .category-details {
         background: #fff;
     }
 }
+
+/* Prevent hidden dropdown layers from covering the hero. */
+@media (min-width: 992px) {
+    #navbar .mega-dropdown > .mega-menu {
+        pointer-events: none;
+    }
+
+    #navbar .mega-dropdown:hover > .mega-menu,
+    #navbar .mega-dropdown:focus-within > .mega-menu {
+        pointer-events: auto;
+    }
+
+    #navbar .mega-dropdown > .mega-menu .mega-links-list,
+    #navbar .mega-dropdown > .mega-menu .mega-topic-list {
+        visibility: inherit !important;
+        pointer-events: inherit;
+    }
+}
+
+@media (max-width: 991.98px) {
+    #navbar.navbar-mobile .mega-dropdown > .mega-menu,
+    #navbar.navbar-mobile .mega-dropdown > .mega-menu .mega-links-list,
+    #navbar.navbar-mobile .mega-dropdown > .mega-menu .mega-topic-list {
+        pointer-events: auto;
+    }
+}
