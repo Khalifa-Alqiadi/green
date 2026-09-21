@@ -184,6 +184,7 @@ return array(
     'line' => 'Line',
     'styleSettings' => 'การตั้งค่าสไตล์',
     'siteLogo' => 'โลโก้เว็บไซต์',
+    'footerLogo' => 'โลโก้เว็บไซต์ในส่วนท้าย',
     'favicon' => 'ไอคอน Favicon',
     'appleIcon' => 'ไอคอนแอปเปิ้ล',
     'styleColor1' => 'สีรูปแบบที่ 1',

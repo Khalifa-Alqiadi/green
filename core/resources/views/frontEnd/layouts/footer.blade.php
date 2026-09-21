@@ -11,32 +11,40 @@ if (Helper::GeneralWebmasterSettings("footer_menu_id") >0) {
 }
 $site_title_var = "site_title_".@Helper::currentLanguage()->code;
 $site_desc_var = "site_desc_".@Helper::currentLanguage()->code;
+$footer_logo = Helper::GeneralSiteSettings("style_footer_logo");
+$header_logo = Helper::GeneralSiteSettings("style_logo_" . @Helper::currentLanguage()->code);
 ?>
 <footer id="footer" class="meu-footer" {!!  $footer_style !!}>
     <span class="footer-fx" aria-hidden="true">
         <span class="footer-fx-grid"></span>
-        <span class="footer-fx-orb footer-fx-orb-1"></span>
-        <span class="footer-fx-orb footer-fx-orb-2"></span>
-        <span class="footer-fx-watermark">MEU</span>
+        <span class="footer-fx-watermark"></span>
         <span class="footer-fx-seal"></span>
     </span>
+    <div class="footer-pattern-rail" aria-hidden="true">
+        <span></span><i></i><span></span>
+    </div>
     <div class="footer-top">
         <div class="container">
-            <div class="row footer-grid gy-5 gx-lg-5 align-items-start">
+            <div class="row footer-grid gy-5 gx-lg-5 align-items-stretch">
 
-                <div class="col-lg-3 col-md-6 footer-brand">
+                <div class="col-lg-4 footer-brand">
                     <div class="footer-panel">
-                        <a href="{{ Helper::homeURL() }}" class="footer-logo">
-                            @if(Helper::GeneralSiteSettings("style_logo_" . @Helper::currentLanguage()->code) !="")
-                                <img alt="{{ Helper::GeneralSiteSettings($site_title_var) }}"
-                                     src="{{ URL::to('uploads/settings/footer-logo.png') }}">
-                                {{-- <img alt="{{ Helper::GeneralSiteSettings($site_title_var) }}"
-                                     src="{{ route("fileView",["path" =>'settings/'.Helper::GeneralSiteSettings("style_logo_" . @Helper::currentLanguage()->code) ]) }}"> --}}
-                            @else
-                                <img alt="{{ Helper::GeneralSiteSettings($site_title_var) }}"
-                                     src="{{ route("fileView",["path" =>'settings/nologo.png' ]) }}">
-                            @endif
-                        </a>
+                        <div class="footer-brand-arch">
+                            <span class="footer-brand-star" aria-hidden="true"></span>
+                            <a href="{{ Helper::homeURL() }}" class="footer-logo">
+                                @if($footer_logo != "")
+                                    <img alt="{{ Helper::GeneralSiteSettings($site_title_var) }}"
+                                         src="{{ route("fileView",["path" =>'settings/'.$footer_logo ]) }}">
+                                @elseif($header_logo != "")
+                                    <img alt="{{ Helper::GeneralSiteSettings($site_title_var) }}"
+                                         src="{{ route("fileView",["path" =>'settings/'.$header_logo ]) }}">
+                                @else
+                                    <img alt="{{ Helper::GeneralSiteSettings($site_title_var) }}"
+                                         src="{{ route("fileView",["path" =>'settings/nologo.png' ]) }}">
+                                @endif
+                            </a>
+                            <strong class="footer-site-name">{{ Helper::GeneralSiteSettings($site_title_var) }}</strong>
+                        </div>
                         @if(Helper::GeneralSiteSettings($site_desc_var) !="")
                             <p class="footer-tagline">{{ Helper::GeneralSiteSettings($site_desc_var) }}</p>
                         @endif
@@ -45,7 +53,7 @@ $site_desc_var = "site_desc_".@Helper::currentLanguage()->code;
                 </div>
 
                 @if(count($MenuLinks) >0)
-                    <div class="col-lg-6 col-md-6 footer-links footer-links-2col">
+                    <div class="col-lg-5 col-md-7 footer-links footer-links-2col">
                         <div class="footer-panel">
                             <div class="footer-title">
                                 <span class="footer-title-icon"><i class="bi bi-link-45deg"></i></span>
@@ -54,8 +62,8 @@ $site_desc_var = "site_desc_".@Helper::currentLanguage()->code;
                             <ul>
                                 @foreach($MenuLinks as $MenuLink)
                                     <li>
-                                        {{-- <a class="nav-link" href="{{ @$MenuLink->url }}"
-                                           target="{{ @$MenuLink->target }}">{!! (@$MenuLink->icon)?"<i class='".@$MenuLink->icon."'></i> ":"" !!} {{ @$MenuLink->title }}</a> --}}
+                                        <a class="nav-link" href="{{ @$MenuLink->url }}"
+                                           target="{{ @$MenuLink->target }}">{!! (@$MenuLink->icon)?"<i class='".@$MenuLink->icon."'></i> ":"" !!} {{ @$MenuLink->title }}</a>
                                         @if(@$MenuLink->sub)
                                             <ul>
                                                 @foreach($MenuLink->sub as $SubLink)
@@ -72,7 +80,7 @@ $site_desc_var = "site_desc_".@Helper::currentLanguage()->code;
                     </div>
                 @endif
 
-                <div class="col-lg-3 col-md-6 footer-contact-col">
+                <div class="col-lg-3 col-md-5 footer-contact-col">
                     <div class="footer-panel">
                         <div class="footer-title">
                             <span class="footer-title-icon"><i class="bi bi-headset"></i></span>

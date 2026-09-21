@@ -20,6 +20,12 @@ $style_color4 = Helper::GeneralSiteSettings("style_color4");
         --meu-line: {{$style_color4}};
         --meu-ink: {{$style_color2}};
         --meu-muted: {{$style_color4}};
+        --brand-primary: {{$style_color1}};
+        --brand-secondary: {{$style_color2}};
+        --brand-surface: {{$style_color3}};
+        --brand-line: {{$style_color4}};
+        --brand-primary-dark: {{ Helper::colorHexToDarken($style_color1, 1.25) }};
+        --brand-secondary-dark: {{ Helper::colorHexToDarken($style_color2, 1.45) }};
     }
     a:hover, .site-top a, #topbar .contact-info i, #topbar .contact-info a:hover, #topbar .social-links a:hover, .navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a, .navbar .dropdown ul a:hover, .navbar .dropdown ul .active:hover, .navbar .dropdown ul li:hover > a, #footer .footer-bottom a, .sidebar-list .list-group .active, .sidebar-list .list-group a:hover, .contact .info i,.owl-stage-outer .item p a,.staff .member .member-info p a {
         color: {{ Helper::GeneralSiteSettings("style_color1") }};

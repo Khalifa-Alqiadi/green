@@ -48,6 +48,37 @@
         <hr>
         <div class="form-group row">
             <div class="col-sm-6">
+                <label for="style_footer_logo">{!! __('backend.footerLogo') !!}</label>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="col-sm-12 box p-a-xs text-center">
+                            @php
+                                $footerLogoPreview = $Setting->style_footer_logo
+                                    ? 'settings/'.$Setting->style_footer_logo
+                                    : 'settings/nologo.png';
+                            @endphp
+                            <a target="_blank" href="{{ route('fileView', ['path' => $footerLogoPreview]) }}">
+                                <img src="{{ route('fileView', ['path' => $footerLogoPreview]) }}"
+                                     class="img-responsive" id="style_footer_logo_prv"
+                                     alt="{{ __('backend.footerLogo') }}"
+                                     style="width: auto;max-width: 260px;max-height: 80px">
+                                <br>
+                                <small>{{ $Setting->style_footer_logo ?: 'nologo.png' }}</small>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <input type="file" name="style_footer_logo" id="style_footer_logo"
+                       class="form-control" accept="image/*">
+                <small>
+                    <i class="material-icons">&#xe8fd;</i> ( 260x80 px ) -
+                    {!! __('backend.imagesTypes') !!}
+                </small>
+            </div>
+        </div>
+        <hr>
+        <div class="form-group row">
+            <div class="col-sm-6">
                 <label for="style_fav">{!!  __('backend.favicon') !!}</label>
                 @if($Setting->style_fav!="")
                     <div class="row">

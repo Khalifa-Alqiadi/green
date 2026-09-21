@@ -184,6 +184,7 @@ return array(
     'whatapp' => 'Whatsapp फोन नंबर',
     'styleSettings' => 'स्टाइल सेटिंग्स',
     'siteLogo' => 'साइट लोगो',
+    'footerLogo' => 'फुटर साइट लोगो',
     'favicon' => 'फ़ेविकॉन',
     'appleIcon' => 'Apple आइकन',
     'styleColor1' => 'स्टाइल रंग 1',

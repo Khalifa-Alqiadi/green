@@ -209,6 +209,10 @@
         });
         @endforeach
 
+        $("#style_footer_logo").change(function () {
+            readURL(this, "style_footer_logo_prv");
+        });
+
     </script>
 
     @include('dashboard.layouts.editor')

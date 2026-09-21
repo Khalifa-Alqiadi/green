@@ -167,6 +167,24 @@ class SettingsController extends Controller
                 $Setting->style_apple = $fileFinalName3;
             }
 
+            $footerLogoFileName = null;
+            $formFileName = "style_footer_logo";
+            if ($request->hasFile($formFileName)) {
+                $this->validate($request, [
+                    $formFileName => 'file|mimes:'.config('filesystems.allowed_image_types')
+                ]);
+                $FileInfo = FileHelper::uploadFile($request->file($formFileName), $this->uploadPath, 0);
+                $footerLogoFileName = @$FileInfo['name'];
+
+                if ($Setting->style_footer_logo != "" && $Setting->style_footer_logo != "nologo.png") {
+                    FileHelper::deleteFile($this->uploadPath."/".$Setting->style_footer_logo);
+                }
+            }
+
+            if ($footerLogoFileName != "") {
+                $Setting->style_footer_logo = $footerLogoFileName;
+            }
+
             $Setting->style_color1 = $request->style_color1;
             $Setting->style_color2 = $request->style_color2;
             $Setting->style_color3 = $request->style_color3;

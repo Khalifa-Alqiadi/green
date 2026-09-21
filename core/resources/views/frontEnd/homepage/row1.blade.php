@@ -38,7 +38,7 @@
             {!! Blade::render($custom_body_code) !!}
         @endpush
     @endif
-@endif}}
+@endif
 
 <?php
 $TextBanners = Helper::BannersList(Helper::GeneralWebmasterSettings("home_text_banners_section_id"));

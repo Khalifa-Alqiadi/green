@@ -76,6 +76,7 @@
 
 <link href="{{ URL::asset('assets/frontend/css/landing-meu.css') }}?v={{ Helper::system_version() }}" rel="stylesheet"/>
 <link href="{{ URL::asset('assets/frontend/css/mega-menu.css') }}?v={{ Helper::system_version() }}" rel="stylesheet"/>
+<link href="{{ URL::asset('assets/frontend/css/yemen-scholars.css') }}?v={{ @filemtime(base_path('../assets/frontend/css/yemen-scholars.css')) ?: Helper::system_version() }}" rel="stylesheet"/>
 
 <!-- Favicon and Touch Icons -->
 @if(Helper::GeneralSiteSettings("style_fav") !="")

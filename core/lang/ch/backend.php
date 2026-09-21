@@ -184,6 +184,7 @@ return array(
     'whatapp' => 'Whatsapp',
     'styleSettings' => '样式设置',
     'siteLogo' => '网站标志',
+    'footerLogo' => '页脚网站标志',
     'favicon' => '网站图标',
     'appleIcon' => 'Apple 图标',
     'styleColor1' => '主题色 1',

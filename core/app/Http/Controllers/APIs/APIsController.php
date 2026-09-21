@@ -224,6 +224,7 @@ For more details check <a href='http://smartfordesign.net/smartend/documentation
         // Response Details
         $response_details = [
             'logo' => ($Setting->$style_logo_var != "") ? url("")."/uploads/settings/".$Setting->$style_logo_var : null,
+            'footer_logo' => ($Setting->style_footer_logo != "") ? url("")."/uploads/settings/".$Setting->style_footer_logo : null,
             'fav_icon' => ($Setting->style_fav != "") ? url("")."/uploads/settings/".$Setting->style_fav : null,
             'apple_icon' => ($Setting->style_apple != "") ? url("")."/uploads/settings/".$Setting->style_apple : null,
             'style_color_1' => $Setting->style_color1,

@@ -183,6 +183,7 @@ return array(
     'whatapp' => 'Numéro Whatsapp',
     'styleSettings' => 'Paramètres de style',
     'siteLogo' => 'Logo du site',
+    'footerLogo' => 'Logo du pied de page',
     'favicon' => 'Favicon',
     'appleIcon' => 'Icône Apple',
     'styleColor1' => 'Couleur de style 1',

@@ -50,9 +50,9 @@ $is_image_view = in_array('image-view', preg_split('/\s+/', $block_classes), tru
             <div class="meu-static-document-frame meu-reveal">
                 <div class="meu-static-document-toolbar" aria-hidden="true">
                     <span></span><span></span><span></span>
-                    <b>MEU</b>
+                    <b><i class="bi bi-book"></i></b>
                 </div>
-                <span class="meu-static-document-watermark" aria-hidden="true">MEU</span>
+                <span class="meu-static-document-watermark" aria-hidden="true"></span>
                 <div class="meu-prose meu-static-copy meu-static-copy-wide meu-stagger">
                     {!! str_replace('"#','"'.Request::url().'#',@$TopicBlockContents->{"details_".@Helper::currentLanguage()->code}) !!}
                 </div>

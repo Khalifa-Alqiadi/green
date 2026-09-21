@@ -193,6 +193,7 @@ return array(
     'whatapp' => 'Whatsapp phone number',
     'styleSettings' => 'خيارات التصميم',
     'siteLogo' => 'شعار الموقع',
+    'footerLogo' => 'شعار الموقع في الفوتر',
     'favicon' => 'ايقونة المفضلة',
     'appleIcon' => 'ايقونة آبل',
     'styleColor1' => 'لون التصميم الأساسي',

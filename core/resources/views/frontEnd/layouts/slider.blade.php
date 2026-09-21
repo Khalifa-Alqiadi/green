@@ -4,15 +4,11 @@
         $SliderBannersCount = count($SliderBanners);
         ?>
     @if(count($SliderBanners)>0)
-        <section id="hero" class="meu-hero">
+        <section id="hero" class="meu-hero scholars-editorial-hero">
             <div class="hero-fx" aria-hidden="true">
                 <span class="hero-fx-grid"></span>
-                <span class="hero-fx-scan"></span>
-                <span class="hero-fx-orb hero-fx-orb-1"></span>
-                <span class="hero-fx-orb hero-fx-orb-2"></span>
-                <span class="hero-fx-orb hero-fx-orb-3"></span>
-                <span class="hero-fx-hex"></span>
-                <span class="hero-fx-wordmark">MEU</span>
+                <span class="hero-fx-rosette"></span>
+                <span class="hero-fx-arch"></span>
             </div>
             <div class="hero-container hero-slider">
                 @foreach($SliderBanners->slice(0,1) as $SliderBanner)
@@ -77,16 +73,20 @@
                                         $BFile = $SliderBanner->$file_var2;
                                     }
                                     ?>
-                                <div
-                                    class="lazyload carousel-item {{ ($i==0)?"active":"" }} {{ ($BDetails =="" && $SliderBanner->$link_var=="")?"carousel-item-clear":"" }}"
-                                    style="background-image: url('{{ route("fileView",["path" =>'banners/'.$BFile ]) }}');">
+                                <div class="carousel-item {{ ($i==0)?"active":"" }} {{ ($BDetails =="" && $SliderBanner->$link_var=="")?"carousel-item-clear":"" }}">
+                                    <div class="lazyload hero-image-stage"
+                                         style="background-image: url('{{ route("fileView",["path" =>'banners/'.$BFile ]) }}');"
+                                         role="img" aria-label="{{ strip_tags($BTitle) }}">
+                                        <span class="hero-image-frame" aria-hidden="true"></span>
+                                        <span class="hero-image-corner" aria-hidden="true"></span>
+                                    </div>
                                     <div class="carousel-container">
                                         <div class="carousel-content container">
                                             <div class="slider-content">
                                                 @if($BTitle !="" || $BDetails !="" || $SliderBanner->$link_var!="")
                                                     <div class="hero-slide-meta">
                                                         <span class="hero-slide-meta-mark"></span>
-                                                        <span class="hero-slide-brand">MEU</span>
+                                                        <span class="hero-slide-brand">{{ Helper::GeneralSiteSettings('site_title_'.@Helper::currentLanguage()->code) }}</span>
                                                         <span class="hero-slide-count">
                                                             {{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}
                                                             <small>/ {{ str_pad($SliderBannersCount, 2, '0', STR_PAD_LEFT) }}</small>
@@ -104,7 +104,7 @@
                                                         <a href="{!! $SliderBanner->$link_var !!}"
                                                            class="btn-theme slider-link">
                                                             <span>{{ __('frontend.moreDetails') }}</span>
-                                                            <i class="bi bi-arrow-left"></i>
+                                                            <i class="bi bi-arrow-{{ @Helper::currentLanguage()->right }}"></i>
                                                         </a>
                                                     @endif
                                                     <div class="hero-slide-progress" aria-hidden="true"><span></span></div>
