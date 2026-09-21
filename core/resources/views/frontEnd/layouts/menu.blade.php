@@ -89,45 +89,49 @@
                                         </div>
                                     </li>
                                 @else
-                                @foreach($MenuLink->sub as $SubLink)
-                                    <li class="{{ (@$SubLink->sub)?"dropdown":"" }}"><a class="nav-link"
-                                                                                        href="{{ @$SubLink->url }}"
-                                                                                        target="{{ @$SubLink->target }}">
-                                            <span class="mega-menu-link-copy">
-                                                <span class="mega-menu-link-title">{!! (@$SubLink->icon)?"<i class='".@$SubLink->icon."'></i> ":"" !!} {{ @$SubLink->title }}</span>
-                                            </span>
-                                            @if(@$SubLink->sub)
-                                                <i class="drop-arrow bi bi-chevron-{{ @Helper::currentLanguage()->right }}"></i>
-                                            @endif
-                                        </a>
-                                        @if(@$SubLink->sub)
-                                            <ul>
-                                                @foreach($SubLink->sub as $SubLink2)
-                                                    <li class="{{ (@$SubLink2->sub)?"dropdown":"" }}"><a
-                                                            class="nav-link"
-                                                            href="{{ @$SubLink2->url }}"
-                                                            target="{{ @$SubLink2->target }}">{!! (@$SubLink2->icon)?"<i class='".@$SubLink2->icon."'></i> ":"" !!} {{ @$SubLink2->title }}
-                                                            @if(@$SubLink2->sub)
-                                                                <i class="drop-arrow bi bi-chevron-{{ @Helper::currentLanguage()->right }}"></i>
-                                                            @endif
-                                                        </a>
-                                                        @if(@$SubLink2->sub)
-                                                            <ul>
-                                                                @foreach($SubLink2->sub as $SubLink3)
-                                                                    <li><a
-                                                                            class="nav-link"
-                                                                            href="{{ @$SubLink3->url }}"
-                                                                            target="{{ @$SubLink3->target }}">{!! (@$SubLink3->icon)?"<i class='".@$SubLink3->icon."'></i> ":"" !!} {{ @$SubLink3->title }}</a>
-                                                                    </li>
-                                                                @endforeach
-                                                            </ul>
+                                    <li class="mega-links-area">
+                                        <ul class="mega-links-list">
+                                            @foreach($MenuLink->sub as $SubLink)
+                                                <li class="{{ (@$SubLink->sub)?"dropdown":"" }}"><a class="nav-link"
+                                                                                                    href="{{ @$SubLink->url }}"
+                                                                                                    target="{{ @$SubLink->target }}">
+                                                        <span class="mega-menu-link-copy">
+                                                            <span class="mega-menu-link-title">{!! (@$SubLink->icon)?"<i class='".@$SubLink->icon."'></i> ":"" !!} {{ @$SubLink->title }}</span>
+                                                        </span>
+                                                        @if(@$SubLink->sub)
+                                                            <i class="drop-arrow bi bi-chevron-{{ @Helper::currentLanguage()->right }}"></i>
                                                         @endif
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                        @endif
+                                                    </a>
+                                                    @if(@$SubLink->sub)
+                                                        <ul>
+                                                            @foreach($SubLink->sub as $SubLink2)
+                                                                <li class="{{ (@$SubLink2->sub)?"dropdown":"" }}"><a
+                                                                        class="nav-link"
+                                                                        href="{{ @$SubLink2->url }}"
+                                                                        target="{{ @$SubLink2->target }}">{!! (@$SubLink2->icon)?"<i class='".@$SubLink2->icon."'></i> ":"" !!} {{ @$SubLink2->title }}
+                                                                        @if(@$SubLink2->sub)
+                                                                            <i class="drop-arrow bi bi-chevron-{{ @Helper::currentLanguage()->right }}"></i>
+                                                                        @endif
+                                                                    </a>
+                                                                    @if(@$SubLink2->sub)
+                                                                        <ul>
+                                                                            @foreach($SubLink2->sub as $SubLink3)
+                                                                                <li><a
+                                                                                        class="nav-link"
+                                                                                        href="{{ @$SubLink3->url }}"
+                                                                                        target="{{ @$SubLink3->target }}">{!! (@$SubLink3->icon)?"<i class='".@$SubLink3->icon."'></i> ":"" !!} {{ @$SubLink3->title }}</a>
+                                                                                </li>
+                                                                            @endforeach
+                                                                        </ul>
+                                                                    @endif
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    @endif
+                                                </li>
+                                            @endforeach
+                                        </ul>
                                     </li>
-                                @endforeach
                                 @endif
                             </ul>
                         @endif
